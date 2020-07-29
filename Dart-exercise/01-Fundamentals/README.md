@@ -1,7 +1,7 @@
 ## 01-Fundamentals
 ### playground.dart
 #### Code
-```
+```Dart
 main() {
   var firstName = 'Mahmud';
   String lastName = 'Ahsan';
@@ -17,7 +17,7 @@ Mahmud Ahsan
 
 ### playground2.dart
 #### Code
-```
+```Dart
 main() {
   stdout.writeln('What is your name: ?');
   String name = stdin.readLineSync();

@@ -1,7 +1,7 @@
 ## 08-Class
 ### playground37.dart
 #### Code
-```
+```Dart
 class Person {
   String name;
   int age;
@@ -29,7 +29,7 @@ Mahmud
 
 ### playground38.dart
 #### Code
-```
+```Dart
 class Person {
   String name;
   int age;
@@ -65,7 +65,7 @@ Mahmud
 
 ### playground39.dart
 #### Code
-```
+```Dart
 class Person {
   String name;
   int age;
@@ -98,7 +98,7 @@ Mahmud
 
 ### playground40.dart
 #### Code
-```
+```Dart
 class Person {
   String name;
   int age;
@@ -143,7 +143,7 @@ Guest
 ### playground41.dart
 * final: type will be defined by inferred value
 #### Code
-```
+```Dart
 class X {
   final name;
   static const int age = 10;
@@ -186,7 +186,7 @@ Jill
 * [ES6 的 Class 、super 的特例與繼承](https://ithelp.ithome.com.tw/articles/10200658)
 
 #### Code
-```
+```Dart
 // Class
 
 class Vehicle {
@@ -231,7 +231,7 @@ Accord
 ### playground43.dart
 * Define two calculated properties: right and bottom.
 #### Code
-```
+```Dart
 class Rectangle {
   num left, top, width, height;
 

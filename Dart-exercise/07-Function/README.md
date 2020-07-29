@@ -1,7 +1,7 @@
 ## 07-Function
 ### playground29.dart
 #### Code
-```
+```Dart
 void main() {
   showOutput(square(2));
   showOutput(square(2.5));
@@ -30,7 +30,7 @@ void showOutput(var msg) {
 * Arrow Function  (=>)
 * [箭頭函式 (Arrow functions)](https://wcc723.github.io/javascript/2017/12/21/javascript-es6-arrow-function/)
 #### Code
-```
+```Dart
 void main() {
   // Arrow Function    =>
   showOutput(square(2));
@@ -53,7 +53,7 @@ void showOutput(var msg) {
 
 ### playground31.dart
 #### Code
-```
+```Dart
 main() {
   var list = ['apples', 'bananas', 'oranges'];
 
@@ -75,7 +75,7 @@ oranges
 
 ### playground32.dart
 #### Code
-```
+```Dart
 main() {
   var list = ['apples', 'bananas', 'oranges'];
 
@@ -95,7 +95,7 @@ oranges
 
 ### playground33.dart
 #### Code
-```
+```Dart
 void main() {
   print(sum(2, 2));
 }
@@ -111,7 +111,7 @@ dynamic sum(var num1, var num2) => num1 + num2;
 
 ### playground34.dart
 #### Code
-```
+```Dart
 void main() {
   print(sum(num2: 4, num1: 2));
 }
@@ -127,7 +127,7 @@ dynamic sum({var num1, var num2}) => num1 + num2;
 
 ### playground35.dart
 #### Code
-```
+```Dart
 void main() {
   print(sum(10, num2: 2));
 }
@@ -143,7 +143,7 @@ dynamic sum(var num1, {var num2}) => num1 + num2;
 
 ### playground36.dart
 #### Code
-```
+```Dart
 void main() {
   print(sum(10));
   print(sum(10, num2: 2));

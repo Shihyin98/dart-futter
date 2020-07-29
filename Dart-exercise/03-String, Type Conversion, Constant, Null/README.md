@@ -1,7 +1,7 @@
 ## 03-String, Type Conversion, Constant, Null
 ### playground4.dart
 #### Code
-```
+```Dart
 main() {
   var s1 = 'Single quotes work well for string literals.';
   var s2 = 'Double quotes work just as well.';
@@ -32,7 +32,7 @@ In a raw string, not even \n gets special treatment.
 
 ### playground5.dart
 #### Code
-```
+```Dart
 main() {
   var age = 35;
   var str = 'My age is : $age';
@@ -46,7 +46,7 @@ My age is : 35
 
 ### playground6.dart
 #### Code
-```
+```Dart
 main() {
   var s1 = '''You can create multi-line strings like this one.
   ''';
@@ -70,7 +70,7 @@ This is also a multi-line string.
 * 3.14159.toStringAsFixed(2)
 * [Dart 取两位小数 四舍五入的方法](https://blog.csdn.net/u013095264/article/details/103056322)
 #### Code
-```
+```Dart
 main() {
   // String -> int
   var one = int.parse('1');
@@ -92,7 +92,7 @@ main() {
 
 ### playground8.dart
 #### Code
-```
+```Dart
 main() {
   const aConstNum = 0; // int constant
   const aConstBool = true; // bool constant

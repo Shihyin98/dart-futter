@@ -1,7 +1,7 @@
 ## 02-Data Types
 ### playground3.dart
 #### Code
-```
+```Dart
 main() {
   int amount1 = 100;
   var amount2 = 200;

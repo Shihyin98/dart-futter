@@ -1,7 +1,7 @@
 ## 06-Collection[List, Set, Map]
 ### playground23.dart
 #### Code
-```
+```Dart
 void main() {
   // List
   List names = ['Jack', 'Jill', 10, 100.1];
@@ -51,7 +51,7 @@ Mark
 
 ### playground24.dart
 #### Code
-```
+```Dart
 void main() {
   // Set
   var halogens = {'fluorine', 'chlorine'};
@@ -69,7 +69,7 @@ chlorine
 
 ### playground25.dart
 #### Code
-```
+```Dart
 void main() {
   // Map
   var gifts = {
@@ -88,7 +88,7 @@ golden rings
 
 ### playground26.dart
 #### Code
-```
+```Dart
 void main() {
   // Map
   var gifts = {
@@ -107,7 +107,7 @@ turtledoves
 
 ### playground27.dart
 #### Code
-```
+```Dart
 void main() {
   // Map
   var gifts = Map();
@@ -123,7 +123,7 @@ Mongo
 
 ### playground28.dart
 #### Code
-```
+```Dart
 void main() {
   // Map
   var gifts = {'first': 'Mongo', 'second': 'Jack Fruit'};

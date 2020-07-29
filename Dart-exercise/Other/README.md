@@ -1,7 +1,7 @@
 ## Other exercise
 ### object.dart
 #### Code
-```
+```Dart
 class Person {
   int age;
   String name;
@@ -20,7 +20,7 @@ void main() {
 
 ### print.dart
 #### Code
-```
+```Dart
 main() {
   print('hello world');
 }
@@ -34,7 +34,7 @@ hello world
 
 ### test.dart
 #### Code
-```
+```Dart
 void main() {
   print('Hello');
 

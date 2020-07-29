@@ -1,7 +1,7 @@
 ## 04-Operators
 ### playground9.dart
 #### Code
-```
+```Dart
 void main() {
   int num = 10 + 22;
   num = num - 2;
@@ -54,7 +54,7 @@ num is not equal to 100
 * Null Aware Operator
 * (?.), (??), (??=)
 #### Code
-```
+```Dart
 class Num {
   int num = 10;
 }
@@ -111,7 +111,7 @@ main() {
 ### playground11.dart
 * Ternary operator
 #### Code
-```
+```Dart
 void main() {
   int x = 100;
   var result = x % 2 == 0 ? 'Even' : 'Odd';
@@ -127,7 +127,7 @@ Even
 ### playground12.dart
 * Type test
 #### Code
-```
+```Dart
 void main() {
   int x = 100;
 
@@ -145,7 +145,7 @@ integer
 ### playground13.dart
 * Conditional Statement
 #### Code
-```
+```Dart
 void main() {
   int number = 100;
 
@@ -167,7 +167,7 @@ Even
 ### playground14.dart
 * Conditional Statement
 #### Code
-```
+```Dart
 void main() {
   int number = 20;
   switch (number) {

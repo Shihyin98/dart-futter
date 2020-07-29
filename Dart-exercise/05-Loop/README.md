@@ -2,7 +2,7 @@
 ### playground15.dart
 * Loop
 #### Code
-```
+```Dart
 void main() {
   // Standard for loop
   for (var i = 1; i <= 10; ++i) {
@@ -27,7 +27,7 @@ void main() {
 
 ### playground16.dart
 #### Code
-```
+```Dart
 void main() {
   // for-in loop
   var numbers = [1, 2, 3];
@@ -54,7 +54,7 @@ void main() {
 
 ### playground17.dart
 #### Code
-```
+```Dart
 void main() {
   // forEach loop
   var numbers = [1, 2, 3];
@@ -73,7 +73,7 @@ num
 
 ### playground18.dart
 #### Code
-```
+```Dart
 void main() {
   // forEach loop
   var numbers = [1, 2, 3];
@@ -92,7 +92,7 @@ void main() {
 
 ### playground19.dart
 #### Code
-```
+```Dart
 void main() {
   // forEach loop
   var numbers = [1, 2, 3];
@@ -116,7 +116,7 @@ void printNum(num) {
 
 ### playground20.dart
 #### Code
-```
+```Dart
 void main() {
   // while loop
   int num = 5;
@@ -139,7 +139,7 @@ void main() {
 
 ### playground21.dart
 #### Code
-```
+```Dart
 void main() {
   for (var i = 0; i < 10; ++i) {
     if (i > 5) break;
@@ -160,7 +160,7 @@ void main() {
 
 ### playground22.dart
 #### Code
-```
+```Dart
 void main() {
   for (var i = 0; i < 10; ++i) {
     if (i % 2 == 0) continue;
