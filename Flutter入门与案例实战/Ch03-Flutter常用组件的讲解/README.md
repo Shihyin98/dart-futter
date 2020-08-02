@@ -808,3 +808,9 @@ class MyApp extends StatelessWidget {
 | ![list-items](pic/list-items.gif) |
 | :-------------------------------: |
 |            list-items             |
+
+
+
+#### Other Info.
+* [初探 Flutter ：使用單一程式碼輕鬆建立 iOS 及 Android App！](https://www.appcoda.com.tw/flutter-basics/)
+* [【Flutter基礎概念與實作】 Day7–Flutter Basic Widgets](https://ithelp.ithome.com.tw/articles/10215654)
