@@ -4,7 +4,7 @@
 
 ### 3-1 TextWidget 文本组件讲解
 
-##### Code: [3-1 underLine\helloProject](3-1 underLine/heloProject)
+##### Code: [3-1 underLine\helloProject](3-1underLine/heloProject)
 
 #### TextWidget 文本组件
 
