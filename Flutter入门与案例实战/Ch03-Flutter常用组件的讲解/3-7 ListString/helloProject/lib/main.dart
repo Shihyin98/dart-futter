@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
           title: new Text('ListView Widget'),
         ),
         body: new ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return new ListTile(title: new Text('${items[index]}'));
-            }),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return new ListTile(title: new Text('${items[index]}'));
+          },
+        ),
       ),
     );
   }
