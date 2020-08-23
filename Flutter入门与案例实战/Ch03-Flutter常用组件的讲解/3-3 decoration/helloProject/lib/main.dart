@@ -10,26 +10,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'TextWidget',
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text('TextWidget'),
+      title: 'TextWidget',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('TextWidget'),
+        ),
+        body: Center(
+          child: Container(
+            child: new Text('Hello Imooc', style: TextStyle(fontSize: 40.0)),
+            alignment: Alignment.bottomRight,
+            width: 300.0,
+            height: 300.0,
+            // color: Colors.lightBlue,
+            padding: const EdgeInsets.fromLTRB(0.0, 30.0, 60.0, 40.0),
+            margin: const EdgeInsets.all(100.0),
+            decoration: new BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Colors.lightBlue, Colors.greenAccent, Colors.purple],
+              ),
             ),
-            body: Center(
-                child: Container(
-                    child: new Text('Hello Imooc',
-                        style: TextStyle(fontSize: 40.0)),
-                    alignment: Alignment.bottomRight,
-                    width: 300.0,
-                    height: 300.0,
-                    // color: Colors.lightBlue,
-                    padding: const EdgeInsets.fromLTRB(0.0, 30.0, 60.0, 40.0),
-                    margin: const EdgeInsets.all(100.0),
-                    decoration: new BoxDecoration(
-                        gradient: const LinearGradient(colors: [
-                      Colors.lightBlue,
-                      Colors.greenAccent,
-                      Colors.purple
-                    ]))))));
+          ),
+        ),
+      ),
+    );
   }
 }

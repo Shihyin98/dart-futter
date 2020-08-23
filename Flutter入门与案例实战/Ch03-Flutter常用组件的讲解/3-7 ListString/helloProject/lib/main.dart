@@ -11,15 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'IMooc Flutter Demo',
-        home: Scaffold(
-            appBar: new AppBar(
-              title: new Text('ListView Widget'),
-            ),
-            body: new ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return new ListTile(title: new Text('${items[index]}'));
-                })));
+      title: 'IMooc Flutter Demo',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('ListView Widget'),
+        ),
+        body: new ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return new ListTile(title: new Text('${items[index]}'));
+            }),
+      ),
+    );
   }
 }
