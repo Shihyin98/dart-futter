@@ -1,0 +1,48 @@
+
+  "project_info": {
+    "project_number": "408814206913",
+    "firebase_url": "https://nqu-app-de74c.firebaseio.com",
+    "project_id": "nqu-app-de74c",
+    "storage_bucket": "nqu-app-de74c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408814206913:android:5feb879812f639e82d7940",
+        "android_client_info": {
+          "package_name": "com.example.ui_exercise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408814206913-9hdsvn84gkj8ql9p2d0p43dh2efuokp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ui_exercise",
+            "certificate_hash": "c2ea22bdbfe786a064837702ae1968c533b6d6a5"
+          }
+        },
+        {
+          "client_id": "408814206913-78ulkmtpicoa66929gv8p76ospgktcvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDahAPkQ75bKHROkSLnxjWvCjbh0SVPpXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408814206913-78ulkmtpicoa66929gv8p76ospgktcvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
