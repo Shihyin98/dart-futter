@@ -26,13 +26,22 @@ class StudyTable extends StatelessWidget {
       children: [
         TableRow(children: [
           Container(),
-          Text("書名"),
-          Text("心得"),
-          Text("學習時數"),
-          Text("狀態"),
+          paddingText("書名"),
+          paddingText("心得"),
+          paddingText("學習時數"),
+          paddingText("狀態"),
         ], decoration: BoxDecoration(color: Colors.orange)),
         ..._buildRows(),
       ],
+    );
+  }
+
+  Widget paddingText(String text) {
+    return Center(
+      child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(text),
+          ),
     );
   }
 
@@ -43,16 +52,17 @@ class StudyTable extends StatelessWidget {
       color: Colors.yellow,
       minWidth: 450.0,
       height: 30.0,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
   }
 
   List<TableRow> _buildRows() {
     List<TableRow> rows = records.map((e) {
       return TableRow(children: [
-        Text(e.index.toString()),
-        Text(e.name),
-        Text(e.review),
-        Text(e.hours.toString()),
+        paddingText(e.index.toString()),
+        paddingText(e.name),
+        paddingText(e.review),
+        paddingText(e.hours.toString()),
         Container()
       ]);
     }).toList();
