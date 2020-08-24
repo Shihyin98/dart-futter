@@ -22,13 +22,14 @@ class StudyTable extends StatelessWidget {
 
   Widget _table() {
     return Table(
+      border: TableBorder.all(),
       children: [
         TableRow(children: [
           Container(),
-          Text("Book"),
-          Text("Review"),
-          Text("Hours"),
-          Text("Status"),
+          Text("書名"),
+          Text("心得"),
+          Text("學習時數"),
+          Text("狀態"),
         ], decoration: BoxDecoration(color: Colors.orange)),
         ..._buildRows(),
       ],
@@ -37,8 +38,11 @@ class StudyTable extends StatelessWidget {
 
   Widget _button() {
     return FlatButton(
-      child: Text("ADD"),
+      child: Text("新增"),
       onPressed: () {},
+      color: Colors.yellow,
+      minWidth: 450.0,
+      height: 30.0,
     );
   }
 
@@ -70,5 +74,4 @@ final records = [
   Record(1, "AA", "aa", 1.5),
   Record(2, "BB", "bb", 1.5),
   Record(3, "CC", "cc", 1.5),
-  Record(4, "DD", "dd", 1.5),
 ];
