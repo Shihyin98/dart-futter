@@ -15,9 +15,9 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hello'),
+          centerTitle: true,
+          title: Text('金門學概論APP'),
           actions: [
-            Image.asset('assets/person.png'),
             Padding(
               padding: const EdgeInsets.all(6),
               child: Image.asset('assets/person.png'),
@@ -26,8 +26,8 @@ class App extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            StudyTable(title: 'Book: 3, Hours: 7'),
-            StudyTable(title: 'Book: 1, Hours: 2'),
+            StudyTable(title: '書籍閱讀: 3, 累計時數: 7'),
+            StudyTable(title: '講座分享: 1, 累計時數: 2'),
           ],
         ),
       ),

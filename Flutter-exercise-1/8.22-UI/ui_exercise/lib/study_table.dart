@@ -20,7 +20,9 @@ class StudyTable extends StatelessWidget {
   }
 
   Widget _title() {
-    return Text(title, style: TextStyle(fontSize: 24));
+    return Padding(
+        padding: EdgeInsets.all(15.0),
+        child:Text(title, style: TextStyle(fontSize:24)),);
   }
 
   Widget _table() {
@@ -33,7 +35,7 @@ class StudyTable extends StatelessWidget {
           paddingText("心得"),
           paddingText("學習時數"),
           paddingText("狀態"),
-        ], decoration: BoxDecoration(color: Colors.orange)),
+        ], decoration: BoxDecoration(color: Colors.orangeAccent)),
         ..._buildRows(),
       ],
     );
@@ -50,14 +52,15 @@ class StudyTable extends StatelessWidget {
 
   Widget _button() {
     return FlatButton(
-      child: Text("新增"),
+      child: Text("新增", style: TextStyle(fontSize:18),),
       onPressed: () async {
         final account = await googleSignIn.signIn();
+        GoogleUserCircleAvatar(identity: account);
         // do something with account
         print(account.displayName);
       },
-      color: Colors.yellow,
-//      minWidth: 450.0,
+      color: Colors.amberAccent,
+      minWidth: 450.0,
 //      height: 30.0,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
