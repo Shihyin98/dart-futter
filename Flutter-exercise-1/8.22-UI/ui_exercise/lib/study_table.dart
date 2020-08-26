@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ui_exercise/home_page.dart';
 
 class StudyTable extends StatelessWidget {
   StudyTable({Key key, this.title}) : super(key: key);
 
   final String title;
-  final googleSignIn = GoogleSignIn();
 
 
   @override
@@ -51,18 +51,15 @@ class StudyTable extends StatelessWidget {
   }
 
   Widget _button() {
-    return FlatButton(
-      child: Text("新增", style: TextStyle(fontSize:18),),
-      onPressed: () async {
-        final account = await googleSignIn.signIn();
-        GoogleUserCircleAvatar(identity: account);
-        // do something with account
-        print(account.displayName);
-      },
-      color: Colors.amberAccent,
-      minWidth: 450.0,
+    return SizedBox(
+      width: double.infinity,
+      child: FlatButton(
+        child: Text("新增", style: TextStyle(fontSize:18),),
+        onPressed: () {},
+        color: Colors.amberAccent,
 //      height: 30.0,
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
     );
   }
 
