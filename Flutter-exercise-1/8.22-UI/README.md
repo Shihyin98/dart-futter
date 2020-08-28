@@ -1,6 +1,6 @@
 # UI, Flutter, Widget
 
-> 8/22 (Sat.)　19:20-22:20
+> 8/22 (Sat.)
 
 * IDE: Android Studio
 <br>

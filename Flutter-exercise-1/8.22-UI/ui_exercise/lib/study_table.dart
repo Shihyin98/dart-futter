@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ui_exercise/home_page.dart';
+
+final googleSignIn = GoogleSignIn();
 
 class StudyTable extends StatelessWidget {
   StudyTable({Key key, this.title}) : super(key: key);
 
   final String title;
-  final googleSignIn = GoogleSignIn();
-
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,6 @@ class StudyTable extends StatelessWidget {
         print(account.displayName);
       },
       color: Colors.amberAccent,
-      minWidth: 450.0,
 //      height: 30.0,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
