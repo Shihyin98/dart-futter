@@ -1,12 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ui_exercise/home_page.dart';
 
 class StudyTable extends StatelessWidget {
-  StudyTable({Key key, this.title}) : super(key: key);
+  StudyTable(this.topicId, this.studyType, this.title, {Key key}) : super(key: key);
 
+  final String topicId;
+  final String studyType;
   final String title;
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +27,34 @@ class StudyTable extends StatelessWidget {
   }
 
   Widget _table() {
-    return Table(
-      border: TableBorder.all(),
-      children: [
-        TableRow(children: [
-          Container(),
-          paddingText("書名"),
-          paddingText("心得"),
-          paddingText("學習時數"),
-          paddingText("狀態"),
-        ], decoration: BoxDecoration(color: Colors.orangeAccent)),
-        ..._buildRows(),
-      ],
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection("users").doc(googleSignIn.currentUser.id)
+          .collection("topics").doc(topicId)
+          .collection("studyTypes").doc(studyType)
+          .collection("records").snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        final records = snapshot.data.docs.map(_toRecord).toList();
+        double sum = 0;
+        records.forEach((record) { sum+=record.hours; });
+        print("TOTAL HOURS: "+sum.toString());
+        return Table(
+          border: TableBorder.all(),
+          children: [
+            TableRow(children: [
+              Container(),
+              paddingText("書名"),
+              paddingText("心得"),
+              paddingText("學習時數"),
+              paddingText("狀態"),
+            ], decoration: BoxDecoration(color: Colors.orangeAccent)),
+            ..._buildRows(records),
+          ],
+        );
+      }
     );
   }
 
@@ -55,7 +72,17 @@ class StudyTable extends StatelessWidget {
       width: double.infinity,
       child: FlatButton(
         child: Text("新增", style: TextStyle(fontSize:18),),
-        onPressed: () {},
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection("users").doc(googleSignIn.currentUser.id)
+              .collection("topics").doc(topicId)
+              .collection("studyTypes").doc(studyType)
+              .collection("records").add({
+            "name": "record1",
+            "review": "review1",
+            "hours": 1.5
+          });
+        },
         color: Colors.amberAccent,
 //      height: 30.0,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -63,32 +90,36 @@ class StudyTable extends StatelessWidget {
     );
   }
 
-  List<TableRow> _buildRows() {
-    List<TableRow> rows = records.map((e) {
+  List<TableRow> _buildRows(List<Record> records) {
+    int i = 0;
+    List<TableRow> rows = records.map((record) {
+      i++;
       return TableRow(children: [
-        paddingText(e.index.toString()),
-        paddingText(e.name),
-        paddingText(e.review),
-        paddingText(e.hours.toString()),
+        paddingText(i.toString()),
+        paddingText(record.name),
+        paddingText(record.review),
+        paddingText(record.hours.toString()),
         Container()
       ]);
     }).toList();
 
     return rows;
   }
+
+  Record _toRecord(QueryDocumentSnapshot snapshot) {
+    final data = snapshot.data();
+    return Record(
+      data["name"],
+      data["review"],
+      data["hours"]
+    );
+  }
 }
 
 class Record {
-  final int index;
   final String name;
   final String review;
   final double hours;
 
-  Record(this.index, this.name, this.review, this.hours);
+  Record(this.name, this.review, this.hours);
 }
-
-final records = [
-  Record(1, "AA", "aa", 1.5),
-  Record(2, "BB", "bb", 1.5),
-  Record(3, "CC", "cc", 1.5),
-];
