@@ -32,10 +32,12 @@ class BookRecordPage extends StatelessWidget {
         final formKey = GlobalKey<FormBuilderState>();
         return Scaffold(
           appBar: MyAppBar(topic.name, [
-            if (!readOnly)
+            if (readOnly) ...[
+              IconButton(icon: Icon(Icons.edit), onPressed: () => _onEdit(context)),
+              IconButton(icon: Icon(Icons.delete), onPressed: () => _onDelete(context)),
+            ] else ...[
               IconButton(icon: Icon(Icons.save), onPressed: () => _onSave(context, formKey)),
-            IconButton(icon: Icon(Icons.edit), onPressed: () => _onEdit(context)),
-            IconButton(icon: Icon(Icons.delete), onPressed: () => _onDelete(context)),
+            ]
           ]),
           body: _buildForm(data, formKey),
         );
