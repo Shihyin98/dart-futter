@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_exercise/book_record_page.dart';
 import 'package:ui_exercise/home_page.dart';
+import 'package:ui_exercise/topic_list_page.dart';
+import 'package:ui_exercise/utils.dart';
 
 class StudyTable extends StatelessWidget {
-  StudyTable(this.topicId, this.studyType, this.title, {Key key}) : super(key: key);
+  StudyTable(this.topic, this.studyType, this.title, {Key key}) : super(key: key);
 
-  final String topicId;
+  final Topic topic;
   final String studyType;
   final String title;
 
@@ -15,7 +18,7 @@ class StudyTable extends StatelessWidget {
       children: <Widget>[
         _title(),
         _table(),
-        _button(),
+        _button(context),
       ],
     );
   }
@@ -28,19 +31,11 @@ class StudyTable extends StatelessWidget {
 
   Widget _table() {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance
-          .collection("users").doc(googleSignIn.currentUser.id)
-          .collection("topics").doc(topicId)
-          .collection("studyTypes").doc(studyType)
-          .collection("records").snapshots(),
+      stream: getRecords(topic.id, studyType).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
-        final records = snapshot.data.docs.map(_toRecord).toList();
-        double sum = 0;
-        records.forEach((record) { sum+=record.hours; });
-        print("TOTAL HOURS: "+sum.toString());
         return Table(
           border: TableBorder.all(),
           children: [
@@ -51,7 +46,7 @@ class StudyTable extends StatelessWidget {
               paddingText("學習時數"),
               paddingText("狀態"),
             ], decoration: BoxDecoration(color: Colors.orangeAccent)),
-            ..._buildRows(records),
+            ..._buildRows(snapshot.data.docs),
           ],
         );
       }
@@ -67,21 +62,13 @@ class StudyTable extends StatelessWidget {
     );
   }
 
-  Widget _button() {
+  Widget _button(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: FlatButton(
         child: Text("新增", style: TextStyle(fontSize:18),),
         onPressed: () {
-          FirebaseFirestore.instance
-              .collection("users").doc(googleSignIn.currentUser.id)
-              .collection("topics").doc(topicId)
-              .collection("studyTypes").doc(studyType)
-              .collection("records").add({
-            "name": "record1",
-            "review": "review1",
-            "hours": 1.5
-          });
+          goTo(context, _getPage(false, null));
         },
         color: Colors.amberAccent,
 //      height: 30.0,
@@ -90,36 +77,34 @@ class StudyTable extends StatelessWidget {
     );
   }
 
-  List<TableRow> _buildRows(List<Record> records) {
+  List<TableRow> _buildRows(List<QueryDocumentSnapshot> snapshots) {
     int i = 0;
-    List<TableRow> rows = records.map((record) {
+    List<TableRow> rows = snapshots.map((snapshot) {
+      final Map<String, dynamic> data = snapshot.data();
+      final recordId = snapshot.id;
+      final DateTime startTime = data["startTime"].toDate();
+      final DateTime endTime = data["endTime"].toDate();
+      final hours = endTime.difference(startTime).inMinutes / 60.0;
       i++;
       return TableRow(children: [
         paddingText(i.toString()),
-        paddingText(record.name),
-        paddingText(record.review),
-        paddingText(record.hours.toString()),
-        Container()
+        paddingText(data["name"]),
+        paddingText(data["review"]),
+        paddingText(hours.toStringAsFixed(1)),
+        Builder(
+          builder: (context) => IconButton(icon: Icon(Icons.remove_red_eye), onPressed: () {
+            goTo(context, _getPage(true, recordId));
+          }),
+        ),
       ]);
     }).toList();
 
     return rows;
   }
 
-  Record _toRecord(QueryDocumentSnapshot snapshot) {
-    final data = snapshot.data();
-    return Record(
-      data["name"],
-      data["review"],
-      data["hours"]
-    );
+  Widget _getPage(bool readOnly, String recordId) {
+    switch(studyType) {
+      case "BOOK": return BookRecordPage(topic: topic, studyType: studyType, readOnly: readOnly, recordId: recordId);
+    }
   }
-}
-
-class Record {
-  final String name;
-  final String review;
-  final double hours;
-
-  Record(this.name, this.review, this.hours);
 }

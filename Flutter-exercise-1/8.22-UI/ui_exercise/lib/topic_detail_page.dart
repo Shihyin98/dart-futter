@@ -12,11 +12,11 @@ class TopicDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(topic.name),
+      appBar: MyAppBar(topic.name, []),
       body: ListView(
         children: [
-          StudyTable(topic.id, 'BOOK', '書籍閱讀: 3, 累計時數: 7'),
-          StudyTable(topic.id, 'SPEECH', '講座分享: 1, 累計時數: 2'),
+          StudyTable(topic, 'BOOK', '書籍閱讀: 3, 累計時數: 7'),
+          StudyTable(topic, 'SPEECH', '講座分享: 1, 累計時數: 2'),
         ],
       ),
     );
@@ -24,10 +24,11 @@ class TopicDetailPage extends StatelessWidget {
 }
 
 class MyAppBar extends AppBar {
-  MyAppBar(String titleText) : super(
+  MyAppBar(String titleText, List<Widget> actions) : super(
     title: Text(titleText),
     centerTitle: true,
     actions: [
+      ...actions,
       PopupMenuButton(
           onSelected: (value) {
             switch(value) {

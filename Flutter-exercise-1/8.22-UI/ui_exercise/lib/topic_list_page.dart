@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_exercise/topic_detail_page.dart';
+import 'package:ui_exercise/utils.dart';
 
 class TopicListPage extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class TopicListPage extends StatelessWidget {
               title: Text(topic.name),
               subtitle: Text(topic.description),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => TopicDetailPage(topic)));
+                goTo(context, TopicDetailPage(topic));
               },
             );
           }).toList();
