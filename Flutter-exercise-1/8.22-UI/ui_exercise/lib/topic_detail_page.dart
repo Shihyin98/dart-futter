@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ui_exercise/home_page.dart';
@@ -34,6 +35,7 @@ class MyAppBar extends AppBar {
             switch(value) {
               case 1:
                 googleSignIn.signOut();
+                FirebaseAuth.instance.signOut();
                 break;
               case 2:
                 break;

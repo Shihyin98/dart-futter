@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:ui_exercise/topic_detail_page.dart';
 import 'package:ui_exercise/topic_list_page.dart';
 import 'package:ui_exercise/utils.dart';
+import 'package:path/path.dart';
 
 class BookRecordPage extends StatelessWidget {
 
@@ -77,6 +82,9 @@ class BookRecordPage extends StatelessWidget {
                   child: _buildTimeField('endTime', '結束時間'),
                 ),
               ]),
+              FormBuilderImagePicker(
+                attribute: 'images',
+              ),
               Container(
                 height: 200,
                 child: FormBuilderTextField(
@@ -85,9 +93,6 @@ class BookRecordPage extends StatelessWidget {
                   style: TextStyle(),
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
-                  validators: [
-                    FormBuilderValidators.required(),
-                  ],
                 ),
               ),
             ],
@@ -103,15 +108,21 @@ class BookRecordPage extends StatelessWidget {
                   inputType: InputType.time,
                   format: DateFormat('HH:mm'),
                   decoration: InputDecoration(labelText: labelText),
-                  validators: [],
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
                 );
   }
 
-  void _onSave(BuildContext context, GlobalKey<FormBuilderState> formKey) {
+  void _onSave(BuildContext context, GlobalKey<FormBuilderState> formKey) async {
     if (!formKey.currentState.saveAndValidate()) {
       return;
     }
     final data = formKey.currentState.value;
+    final List<File> images = data["images"].cast<File>().toList();
+    final urls = await _uploadImages(images);
+    data["images"] = urls;
+
     if (recordId == null) {
       getRecords(topic.id, studyType).add(data);
     } else {
@@ -127,5 +138,15 @@ class BookRecordPage extends StatelessWidget {
   void _onDelete(BuildContext context) {
     getRecords(topic.id, studyType).doc(recordId).delete();
     Navigator.of(context).pop();
+  }
+
+  Future<List<String>> _uploadImages(List<File> images) async {
+    final StorageReference storageReference = FirebaseStorage().ref();
+    final List<Future<StorageTaskSnapshot>> results = images
+        .map((image) => storageReference.child(basename(image.path)).putFile(image).onComplete)
+        .toList();
+    final List<StorageTaskSnapshot> snapshots = await Future.wait(results);
+    final List<Future<String>> urls = snapshots.map((snapshot) => snapshot.ref.getDownloadURL().then((url) => url.toString())).toList();
+    return await Future.wait(urls);
   }
 }

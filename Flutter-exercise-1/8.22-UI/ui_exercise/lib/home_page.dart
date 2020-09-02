@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ui_exercise/topic_list_page.dart';
@@ -18,8 +19,8 @@ class HomePage extends StatelessWidget {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(width: 0, height: 100),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 decoration: BoxDecoration(
@@ -43,10 +44,18 @@ class HomePage extends StatelessWidget {
                   ]),
                 ),
               ),
+              SizedBox(width: 0, height: 50),
               Text("BAR"),
+              SizedBox(width: 0, height: 120),
               FlatButton(
                 onPressed: () async {
-                  await googleSignIn.signIn();
+                  final GoogleSignInAccount account = await googleSignIn.signIn();
+                  final auth = await account.authentication;
+                  final credential = GoogleAuthProvider.credential(
+                    accessToken: auth.accessToken,
+                    idToken: auth.idToken,
+                  );
+                  await FirebaseAuth.instance.signInWithCredential(credential);
                   _goToTopicList(context);
                 },
                 child: Text("LOGIN"),

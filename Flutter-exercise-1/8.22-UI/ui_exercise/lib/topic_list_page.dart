@@ -29,6 +29,24 @@ class TopicListPage extends StatelessWidget {
       ),
     );
   }
+
+  Padding _buildDescription(List<String> descriptions, int i) {
+    return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: descriptions.map((e) {
+                i++;
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("$i. "),
+                      Expanded(child: Text(e)),
+                    ]
+                );
+              }).toList(),
+            ),
+          );
+  }
 }
 
 class Topic {
