@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ui_exercise/topic_list_page.dart';
 
-final googleSignIn = GoogleSignIn();
+final googleSignIn = GoogleSignIn(scopes: ["https://www.googleapis.com/auth/drive"]);
 
 class HomePage extends StatelessWidget {
   @override
